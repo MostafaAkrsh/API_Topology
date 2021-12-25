@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "VBQOBYoiVTyieqwZvMvP71On+3lLV/BZYhk5e/eTV8KAOUtprje2RBDMF1tL/ftSzjkrpq+99CH+GCU/RkAcSQ==",
+  "dgSpecHash": "ICcI0TzYNneAmxIIqcynwtaZs+GxpBIqZhruE88CWT+lOUjLU4vvARXJazgKa72uPORUcR8K7xFWyta9QDVsNA==",
   "success": true,
   "projectFilePath": "F:\\wspace\\API_TOPOLOGY\\API_TOPOLOGY\\API_TOPOLOGY.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\LENOVO\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

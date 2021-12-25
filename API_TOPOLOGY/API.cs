@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,33 +10,45 @@ namespace API_TOPOLOGY
 {
     static class API
     {
-        public bool ReadJSON(File filename)
+        private static List<Topology> _topologies;
+
+        public static bool ReadJSON(string file_path)
+        {
+            var json = File.ReadAllText(file_path);
+            var new_topology = JsonConvert.DeserializeObject<Topology>(json);
+
+            _topologies.Add(new_topology);
+
+            Console.WriteLine(_topologies[0].components[0].resistance);
+
+            return true;
+        }
+        /*
+        public static bool WriteJSON(Topology topology)
         {
             //todo
         }
 
-        public bool WriteJSON(Topology topology)
+        public static List<Topology> QueryTopologies();
         {
             //todo
         }
 
-        public List<Topology> QueryTopologies();
+        public static bool DeleteTopology(string topologyID)
         {
             //todo
         }
 
-        public bool DeleteTopology(string topologyID)
+        public static List<Component> QueryDevices (string topologyID)
         {
             //todo
         }
 
-        public List<Component> QueryDevices (string )
+        public static List<Component> QueryDevicesWithNetlistNode(string TopologyID , string NetlistNodeID)
         {
             //todo
         }
-
-        public List<Component> QueryDevicesWithNetlistNode(string TopologyID , string NetlistNodeID)
-        {
-            //todo
-        }
+        */
     }
+
+}
