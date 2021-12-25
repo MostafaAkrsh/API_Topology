@@ -1,17 +1,18 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Resistance.cs" company="MostafaAkrsh">
+// Copyright (c) MostafaAkrsh. All rights reserved.
+// </copyright>
 
 namespace API_TOPOLOGY
 {
-    class Resistance
+    using Newtonsoft.Json;
+
+    internal class Resistance
     {
         [JsonProperty(PropertyName = "default")]
-        public int def { get; set; }
-        public int min { get; set; }
-        public int max { get; set; }
+        public int Def { get; set; }
+
+        public int Min { get; set; }
+
+        public int Max { get; set; }
     }
 }

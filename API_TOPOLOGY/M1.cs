@@ -1,17 +1,18 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="M1.cs" company="MostafaAkrsh">
+// Copyright (c) MostafaAkrsh. All rights reserved.
+// </copyright>
 
 namespace API_TOPOLOGY
 {
-    class M1
+    using Newtonsoft.Json;
+
+    internal class M1
     {
         [JsonProperty(PropertyName = "default")]
-        public double def { get; set; }
-        public double min { get; set; }
-        public double max { get; set; }
+        public double Def { get; set; }
+
+        public double Min { get; set; }
+
+        public double Max { get; set; }
     }
 }

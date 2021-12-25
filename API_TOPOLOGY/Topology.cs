@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Topology.cs" company="MostafaAkrsh">
+// Copyright (c) MostafaAkrsh. All rights reserved.
+// </copyright>
 
 namespace API_TOPOLOGY
 {
-    class Topology
+    using System.Collections.Generic;
+
+    internal class Topology
     {
-        public string id { get; set; }
-        public List<Component> components { get; set; }
+        public string Id { get; set; }
+
+        public List<Component> Components { get; set; }
     }
 }

@@ -1,12 +1,15 @@
-﻿using System;
-
+﻿// <copyright file="Program.cs" company="MostafaAkrsh">
+// Copyright (c) MostafaAkrsh. All rights reserved.
+// </copyright>
 
 namespace API_TOPOLOGY
 {
-    class Program
+    using System;
+
+    internal class Program
     {
-        static void Main(string[] args)
-        { 
+        private static void Main(string[] args)
+        {
             Console.WriteLine(API.ReadJSON(@"F:\Study Comp IV\master micro\SW_tasks_shared\topology.json"));
             Console.WriteLine(API.ReadJSON(@"F:\Study Comp IV\master micro\SW_tasks_shared\topology(1).json"));
             Console.WriteLine(API.ReadJSON(@"F:\Study Comp IV\master micro\SW_tasks_shared\topology(2).json"));
@@ -15,12 +18,11 @@ namespace API_TOPOLOGY
 
             API.DeleteTopology("top1");
 
-             topologies = API.QueryTopologies();
+            topologies = API.QueryTopologies();
 
-            var temp = API.QueryDevices("top2","drain");
+            var temp = API.QueryDevices("top2", "drain");
 
-
-            //Console.WriteLine(API.WriteJSON(@"top1"));
+            // Console.WriteLine(API.WriteJSON(@"top1"));
         }
     }
 }
