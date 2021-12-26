@@ -5,11 +5,14 @@
 namespace API_TOPOLOGY
 {
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
-    internal class Topology
+    public class Topology
     {
+        [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
+        [JsonProperty(PropertyName = "components")]
         public List<Component> Components { get; set; }
     }
 }

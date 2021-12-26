@@ -14,11 +14,10 @@ namespace API_TOPOLOGY
             Console.WriteLine(API.ReadJSON(@"F:\Study Comp IV\master micro\SW_tasks_shared\topology(1).json"));
             Console.WriteLine(API.ReadJSON(@"F:\Study Comp IV\master micro\SW_tasks_shared\topology(2).json"));
 
-            var topologies = API.QueryTopologies();
+            var topologies = API.WriteJSON("top1");
 
-            API.DeleteTopology("top1");
+            API.DeleteTopology("top1"); 
 
-            topologies = API.QueryTopologies();
 
             var temp = API.QueryDevices("top2", "drain");
 

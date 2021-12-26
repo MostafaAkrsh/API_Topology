@@ -8,10 +8,9 @@ namespace API_TOPOLOGY
     using System.IO;
     using Newtonsoft.Json;
 
-    internal static class API
+    public static class API
     {
-        // private list stores the topologies in memory
-        private static List<Topology> topologies = new List<Topology>();
+        private static readonly List<Topology> Topologies = new List<Topology>();
 
         // Method to read json file and put it into memory
         public static string ReadJSON(string file_path)
@@ -21,13 +20,13 @@ namespace API_TOPOLOGY
                 var json = File.ReadAllText(file_path); // read the file in the path
                 Topology new_topology = (Topology)JsonConvert.DeserializeObject<Topology>(json); // convert it to topology calss
 
-                topologies.Add(new_topology); // add the topology into memory
+                Topologies.Add(new_topology); // add the topology into memory
 
                 return "Read Operation Successed!"; // return this if the read operation successed
             }
             catch
             {
-                return "Read Opeartion Failed!"; // return this if the read operation failed
+                return "Read Operation Failed!"; // return this if the read operation failed
             }
         }
 
@@ -36,13 +35,20 @@ namespace API_TOPOLOGY
         {
             try
             {
-                Topology topology = topologies.Find(x => x.Id == topologyID); // Find the topology by its id
+                Topology topology = Topologies.Find(x => x.Id == topologyID); // Find the topology by its id
                 string json = JsonConvert.SerializeObject(topology, Formatting.Indented); // convert it to json file
 
-                string json_file_name = topologyID;
-                File.WriteAllText(topologyID + ".json", json); // write the json into file
+                if (json != "null")
+                {
+                    string json_file_name = topologyID;
+                    File.WriteAllText(topologyID + ".json", json); // write the json into 
 
-                return "Write Operation Successed!"; // return this if the write operation successed
+                    return "Write Operation Successed!"; // return this if the write operation successed
+                }
+                else
+                {
+                    return "No Topology has this id in memory!";
+                }
             }
             catch
             {
@@ -53,7 +59,7 @@ namespace API_TOPOLOGY
         // method to return all topologies in memory
         public static List<Topology> QueryTopologies()
         {
-            return topologies; // return all topologies
+            return Topologies; // return all topologies
         }
 
         // method to remove specific topology from memroy
@@ -61,9 +67,9 @@ namespace API_TOPOLOGY
         {
             try
             {
-                Topology topology = topologies.Find(x => x.Id == topologyID);
+                Topology topology = Topologies.Find(x => x.Id == topologyID);
 
-                topologies.Remove(topology);
+                Topologies.Remove(topology);
 
                 return "Delete Operation Successed"; // return this if the delete operation successed
             }
@@ -76,7 +82,7 @@ namespace API_TOPOLOGY
         // method to return components in specific topology
         public static List<Component> QueryDevices(string topologyID)
         {
-            Topology topology = topologies.Find(x => x.Id == topologyID); // find the topolgy has this id
+            Topology topology = Topologies.Find(x => x.Id == topologyID); // find the topolgy has this id
 
             return topology.Components; // return the components
         }
@@ -84,9 +90,9 @@ namespace API_TOPOLOGY
         // method to know which devices are connected to a given netlist node a given topology.
         public static List<Component> QueryDevices(string topologyID, string netlistNodeID)
         {
-            Topology topology = topologies.Find(x => x.Id == topologyID); // find the topolgy has this id
+            Topology topology = Topologies.Find(x => x.Id == topologyID); // find the topolgy has this id
 
-            List<Component> components = topology.Components.FindAll(x => x.Netlist.ContainsKey(netlistNodeID)); // return the components has this netlist node
+            List<Component> components = topology.Components.FindAll(x => x.Netlist.ContainsValue(netlistNodeID)); // return the components has this netlist node
 
             return components;
         }

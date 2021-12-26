@@ -6,13 +6,15 @@ namespace API_TOPOLOGY
 {
     using Newtonsoft.Json;
 
-    internal class Resistance
+    public class Resistance
     {
         [JsonProperty(PropertyName = "default")]
-        public int Def { get; set; }
+        public double Def { get; set; }
 
-        public int Min { get; set; }
+        [JsonProperty(PropertyName = "min")]
+        public double Min { get; set; }
 
-        public int Max { get; set; }
+        [JsonProperty(PropertyName = "max")]
+        public double Max { get; set; }
     }
 }
